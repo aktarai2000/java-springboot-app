@@ -10,9 +10,9 @@ pipeline {
     stages {
         stage("build code"){
             steps {
-                echo "----------- build started by soumya ----------"
+                echo "----------- build started by soumya  ----------"
                 sh 'mvn clean package -Dmaven.test.skip=true'
-                echo "----------- build completed ----------"
+                echo "----------- build completed  by seema----------"
             }
         }
     }
