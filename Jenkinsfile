@@ -72,7 +72,34 @@ pipeline {
                     server.publishBuildInfo(buildInfo)
                     echo '------------ Artifact Publish Ended -----------'  
                 }
+
             }   
+        }
+
+    }
+}
+
+
+stage(" Create Docker Image ") {
+            steps {
+                script {
+                    echo '-------------- Docker Build Started -------------'
+                    app = docker.build("meportals.jfrog.io/meportal-docker/myapp:1.0")
+                    echo '-------------- Docker Build Ended -------------'
+                }
+            }
+        }
+
+        stage (" Docker Publish "){
+            steps {
+                script {
+                        echo '---------- Docker Publish Started --------'  
+                        docker.withRegistry("https://meportals.jfrog.io", 'jfrog-cred'){
+                        app.push()
+                        echo '------------ Docker Publish Ended ---------'  
+                    }    
+                }
+            }
         }
 
     }
