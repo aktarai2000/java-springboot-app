@@ -84,7 +84,7 @@ stage(" Create Docker Image ") {
             steps {
                 script {
                     echo '-------------- Docker Build Started -------------'
-                    app = docker.build("meportals.jfrog.io/meportal-docker/myapp:1.0")
+                    app = docker.build("meportals.jfrog.io/ meportal-docker/myapp:1.0")
                     echo '-------------- Docker Build Ended -------------'
                 }
             }
