@@ -17,7 +17,7 @@ pipeline {
                 echo "----------- build completed ----------"
             }
         }
-         
+        /* 
         stage("Test Stage"){
             steps{
                 echo "----------- unit test started ----------"
@@ -25,7 +25,7 @@ pipeline {
                 echo "----------- unit test Completed ----------"
             }
         }
-        /*
+        
         stage('SonarQube Analysis') {
             environment {
                 scannerHome = tool 'sonar-scanner-meportal'
@@ -72,19 +72,14 @@ pipeline {
                     server.publishBuildInfo(buildInfo)
                     echo '------------ Artifact Publish Ended -----------'  
                 }
-
             }   
         }
 
-    }
-}
-
-
-stage(" Create Docker Image ") {
+        stage(" Create Docker Image ") {
             steps {
                 script {
                     echo '-------------- Docker Build Started -------------'
-                    app = docker.build("meportals.jfrog.io/ meportal-docker/myapp:1.0")
+                    app = docker.build("https://meportals.jfrog.io/artifactory/meportal-docker/")
                     echo '-------------- Docker Build Ended -------------'
                 }
             }
